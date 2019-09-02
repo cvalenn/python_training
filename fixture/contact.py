@@ -1,3 +1,5 @@
+from model.contact import Contact
+
 
 class ContactHelper:
 
@@ -48,7 +50,8 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         # confirmation of deletion
         wd.switch_to_alert().accept()
-        self.open_contact_page()
+        wd.get("http://localhost/addressbook/")
+
 
     def select_first_contact(self):
         wd = self.app.wd
@@ -67,3 +70,14 @@ class ContactHelper:
         wd = self.app.wd
         if not ((wd.current_url.endswith("/addressbook/") or wd.current_url.endswith("/addressbook/index.php")) and len(wd.find_elements_by_xpath("//input[@value='Send e-Mail']")) > 0):
             wd.find_element_by_link_text("home").click()
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        contacts = []
+        for element in wd.find_elements_by_name("entry"):
+            lastname1 = element.find_element_by_xpath("td[2]").text
+            firstname1 = element.find_element_by_xpath("td[3]").text
+            id1 = element.find_element_by_name("selected[]").get_attribute("value")
+            contacts.append(Contact(lastname=lastname1, firstname=firstname1, id=id1))
+        return contacts
