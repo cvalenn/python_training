@@ -1,4 +1,5 @@
 from model.contact import Contact
+import time
 
 
 class ContactHelper:
@@ -50,8 +51,8 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         # confirmation of deletion
         wd.switch_to_alert().accept()
+        time.sleep(3)
         wd.get("http://localhost/addressbook/")
-
 
     def select_first_contact(self):
         wd = self.app.wd
@@ -76,8 +77,8 @@ class ContactHelper:
         self.open_contact_page()
         contacts = []
         for element in wd.find_elements_by_name("entry"):
-            lastname1 = element.find_element_by_xpath("td[2]").text
-            firstname1 = element.find_element_by_xpath("td[3]").text
-            id1 = element.find_element_by_name("selected[]").get_attribute("value")
-            contacts.append(Contact(lastname=lastname1, firstname=firstname1, id=id1))
+            lastname = element.find_element_by_xpath("td[2]").text
+            firstname = element.find_element_by_xpath("td[3]").text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            contacts.append(Contact(lastname=lastname, firstname=firstname, id=id))
         return contacts
