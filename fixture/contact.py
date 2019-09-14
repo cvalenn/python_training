@@ -61,8 +61,8 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         # confirmation of deletion
         wd.switch_to_alert().accept()
-        # time.sleep(3)
-        wd.get("http://localhost/addressbook/")
+        time.sleep(1)
+        self.open_contact_page()
         self.contact_cache = None
 
     def select_first_contact(self):
