@@ -140,6 +140,24 @@ class ContactHelper:
                 self.contact_cache.append(Contact(lastname=lastname, firstname=firstname, id=id, address=address, all_phones_from_home_page=all_phones, all_email_from_home_page=all_emails))
         return list(self.contact_cache)
 
+    def add_contact_in_group(self, id, id_group, name):
+        wd = self.app.wd
+        self.open_contact_page()
+        self.select_contact_by_id(id)
+        wd.find_element_by_name("to_group").find_element_by_css_selector("option[value='%s']" % id_group).click()
+        wd.find_element_by_name("add").click()
+        wd.find_element_by_link_text("group page \"%s\"" % name).click()
+
+
+    def remove_contact_from_group(self, id, id_group, name):
+        wd = self.app.wd
+        self.open_contact_page()
+        wd.find_element_by_name("group").find_element_by_css_selector("option[value='%s']" % id_group).click()
+        self.select_contact_by_id(id)
+        wd.find_element_by_name("remove").click()
+        wd.find_element_by_link_text("group page \"%s\"" % name).click()
+
+
     def open_contact_to_edit_by_index(self, index):
         wd = self.app.wd
         self.open_contact_page()

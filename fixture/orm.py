@@ -57,3 +57,12 @@ class ORMFixture:
     def get_contacts_not_in_group(self, group):
         orm_group = list(select(g for g in ORMFixture.ORMGroup if g.id == group.id))[0]
         return self.convert_contacts_to_model(select(c for c in ORMFixture.ORMContact if c.deprecated is None and orm_group not in c.groups))
+
+    @db_session
+    def check_add_contact_in_group(self, contact, group):
+        contacts = self.get_contacts_in_group(group)
+        for c in contacts:
+            if contact.id == c.id:
+                return True
+        return False
+
