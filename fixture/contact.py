@@ -1,5 +1,6 @@
 from model.contact import Contact
 import time
+import re
 
 
 class ContactHelper:
