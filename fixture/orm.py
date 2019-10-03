@@ -66,3 +66,23 @@ class ORMFixture:
                 return True
         return False
 
+    @db_session
+    def check_free_contacts(self):
+        contacts = self.get_contact_list()
+        groups = self.get_group_list()
+        contacts_with_group = []
+        for g in range(len(groups)):
+            for c in range(len(contacts)):
+                if self.check_add_contact_in_group(contacts[c], groups[g]) is True:
+                    id = contacts[c].id
+                    firstname = contacts[c].firstname
+                    lastname = contacts[c].lastname
+                    contacts_with_group.append(Contact(id=id, firstname=firstname, lastname=lastname))
+                    continue
+        return self.filter_function(contacts, contacts_with_group)
+
+    def filter_function(self, a, b):
+        return list(filter(lambda x: x not in b, a))
+
+
+
