@@ -1,0 +1,52 @@
+(env) C:\Users\user\PycharmProjects\python_training>pytest --alluredir allure-results test\test_add_group.py
+Traceback (most recent call last):
+  File "c:\python36\Lib\runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "c:\python36\Lib\runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "C:\Users\user\PycharmProjects\python_training\env\Scripts\pytest.exe\__main__.py", line 9, in <module>
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\_pytest\config\__init__.py", line 58, in main
+    config = _prepareconfig(args, plugins)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\_pytest\config\__init__.py", line 208, in _prepareconfig
+    pluginmanager=pluginmanager, args=args
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\hooks.py", line 289, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\manager.py", line 87, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\manager.py", line 81, in <lambda>
+    firstresult=hook.spec.opts.get("firstresult") if hook.spec else False,
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\callers.py", line 203, in _multicall
+    gen.send(outcome)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\_pytest\helpconfig.py", line 89, in pytest_cmdline_parse
+    config = outcome.get_result()
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\callers.py", line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\callers.py", line 187, in _multicall
+    res = hook_impl.function(*args)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\_pytest\config\__init__.py", line 716, in pytest_cmdline_parse
+    self.parse(args)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\_pytest\config\__init__.py", line 924, in parse
+    self._preparse(args, addopts=addopts)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\_pytest\config\__init__.py", line 870, in _preparse
+    self.pluginmanager.load_setuptools_entrypoints("pytest11")
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\manager.py", line 293, in load_setuptools_entrypoints
+    self.register(plugin, name=ep.name)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\_pytest\config\__init__.py", line 323, in register
+    ret = super().register(plugin, name)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\manager.py", line 121, in register
+    hook._maybe_apply_history(hookimpl)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\hooks.py", line 336, in _maybe_apply_history
+    res = self._hookexec(self, [method], kwargs)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\manager.py", line 87, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\manager.py", line 81, in <lambda>
+    firstresult=hook.spec.opts.get("firstresult") if hook.spec else False,
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\callers.py", line 208, in _multicall
+    return outcome.get_result()
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\callers.py", line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\pluggy\callers.py", line 187, in _multicall
+    res = hook_impl.function(*args)
+  File "c:\users\user\pycharmprojects\python_training\env\lib\site-packages\allure_pytest\plugin.py", line 51, in pytest_addoption
+    severities = [x.value for x in list(allure.severity_level)]
+AttributeError: module 'allure' has no attribute 'severity_level'
