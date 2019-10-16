@@ -4,6 +4,7 @@ import pytest
 import allure
 
 
+
 @allure.step('test_add_group')
 def test_add_group(app, orm, json_groups, check_ui):
     group = json_groups
